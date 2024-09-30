@@ -1,0 +1,35 @@
+package-lock.json
+
+*.css
+*.css.map
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# build-directory
+/build/*
+
+# Optional eslint cache
+.eslintcache
+
+# Output of `npm pack`
+*.tgz
+
+# Output of `wp-scripts plugin-zip`
+*.zip
+
+# dotenv environment variables file
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

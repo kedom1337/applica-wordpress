@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "build": "wp-scripts build --webpack-copy-php --webpack-src-dir=blocks --output-path=build/blocks",
+    "start": "wp-scripts start --webpack-copy-php --webpack-src-dir=blocks --output-path=build/blocks",
+    "create-new-block": "cd blocks && npx @wordpress/create-block@latest  --no-plugin --namespace=starkstrom-blocks --category=starkstrom",
+    "install-dependencies": "npm install",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "*",
+    "@wordpress/create-block": "*"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "*",
+    "@wordpress/blocks": "*",
+    "@wordpress/components": "*",
+    "@wordpress/element": "*",
+    "classnames": "*"
+  }
+}
