@@ -1,1 +1,1 @@
-# applica-wordpress
+# Applica WordPress Plugins
