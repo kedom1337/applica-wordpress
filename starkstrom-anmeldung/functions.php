@@ -10,7 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'API_URL', 'http://localhost:8080/api' );
 
+require_once( PLUGIN_PATH . "model/anmeldung.php" );require_once(PLUGIN_PATH . "model/anmeldung.php");
 
 function starkstrom_layout_categories( $categories ): array {
 	$new = [

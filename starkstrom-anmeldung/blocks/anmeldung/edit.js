@@ -5,8 +5,8 @@ import './editor.scss';
 
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ 'Anmeldung – hello from the editor!'}
-		</p>
+		<div { ...useBlockProps() }>
+			{ 'Anmeldeformular-Block'}
+		</div>
 	);
 }

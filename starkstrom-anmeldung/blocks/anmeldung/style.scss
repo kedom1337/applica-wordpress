@@ -1,0 +1,215 @@
+@import '../../assets/scss/multiselect';
+
+@media only screen and (max-width: 650px) {
+  .registration-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .registration-form-textarea {
+    grid-column: span 1 !important;
+  }
+}
+
+.registration-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 14px 18px;
+
+  .registration-form-input {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      color: #777777;
+      font-size: 13px;
+      line-height: 25px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      width: auto;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+
+    .invalid {
+      background-color: #ffeeee;
+      outline: 2px solid #ff0000;
+      color: #ff0000;
+
+      &::placeholder {
+        color: #ff8888;
+      }
+    }
+
+    input, textarea {
+      border: none;
+      outline: 1px solid #dee2e6;
+      padding: 10px 12px;
+      border-radius: 6px;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #adb0b4;
+      }
+
+      &:user-invalid {
+        background-color: #ffeeee;
+        outline: 2px solid #ff0000;
+        color: #ff0000;
+
+        &::placeholder {
+          color: #ff8888;
+        }
+      }
+
+      &:focus, &:focus-visible {
+        outline: 2px solid #ff6e00;
+      }
+    }
+
+    input {
+      max-height: fit-content;
+    }
+
+
+    textarea {
+      max-width: 100%;
+      min-height: 37px;
+    }
+
+    .registration-form-error-massage {
+      margin-left: 12px;
+      margin-top: 6px;
+      color: #ff0000;
+      font-size: 12px;
+      line-height: normal;
+      width: auto;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+  }
+
+  .registration-form-textarea {
+    grid-column: span 2;
+  }
+
+  .registration-form-input:has(input:required, textarea:required) > .label::after {
+    content: '*';
+    color: red;
+    margin-left: 2px;
+  }
+
+  .registration-form-submit {
+    grid-column-start: 1;
+    color: white;
+    padding: 9px 38px;
+    border-radius: 50px;
+    background-color: #cd1c18;
+    border: none;
+
+    font-size: 13px;
+    line-height: 25px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    width: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #a82121;
+    }
+  }
+}
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.custom-select-remove-selection {
+  color: #848484 !important;
+}
+
+.select-selected {
+  background-color: white;
+  border-radius: 6px;
+  outline: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+
+  .disabled {
+    color: #adb0b4;
+  }
+
+  .text {
+    white-space: nowrap;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .icon {
+    color: #848484;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+
+    transition: transform 0.2s ease;
+  }
+}
+
+.select-arrow-active {
+  outline: 2px solid #ff6e00;
+
+  .icon {
+    transform: rotate(180deg);
+  }
+}
+
+.select-items div, .select-selected {
+  color: #000000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+
+  padding: 10px 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.select-items {
+  position: absolute;
+  background-color: white;
+  border-radius: 6px;
+  outline: 1px solid #dee2e6;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  max-height: 500px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: #f2f2f2;
+}

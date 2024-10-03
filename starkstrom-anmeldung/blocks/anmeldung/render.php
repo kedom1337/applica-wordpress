@@ -1,48 +1,65 @@
 <?php
-
+$oAnmeldung = new Mod_Application();
 ?>
-<script src="<?php echo PLUGIN_URL . 'assets/js/MultiSelect.js' ?>"></script>
-<form id="register-form">
-	<input type="text" name="firstName" placeholder="First Name" required />
-	<input type="text" name="lastName" placeholder="Last Name" required />
-	<input type="email" name="email" placeholder="Email" required />
-	<input type="text" name="phone" placeholder="Phone" required />
-	<input type="number" name="courseId" placeholder="Course ID" required />
-	<input type="number" name="semester" placeholder="Semester" required />
-	<input type="text" name="degree" placeholder="Degree" required />
-	<textarea name="experience" placeholder="Experience" required></textarea>
-	<textarea name="information" placeholder="Information" required></textarea>
-	<input type="number" name="course" placeholder="Course" required />
-	<input type="text" name="fields" placeholder="Fields (comma-separated)" required />
-	<button type="submit">Absenden</button>
+
+<form id="register-form" class="registration-form">
+
+    <div class="registration-form-input">
+        <label class="label" for="firstName">Vorname</label>
+        <input type="text" name="firstName" id="firstName" placeholder="Max" class="rf-input" required/>
+    </div>
+    <div class="registration-form-input">
+        <label class="label" for="lastName">Nachname</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Mustermann" class="rf-input" required/>
+    </div>
+
+    <div class="registration-form-input">
+        <label class="label" for="email">E-Mail</label>
+        <input type="email" name="email" id="email" placeholder="max.mustermann@email.com" class="rf-input" required/>
+    </div>
+
+    <div class="registration-form-input">
+        <label class="label" for="phone">Telefonnummer</label>
+        <input type="text" name="phone" id="phone" placeholder="+49 566 5268 26" class="rf-input" required/>
+    </div>
+
+    <div class="registration-form-input custom-select">
+        <label class="label" for="course">Studiengang</label>
+        <select name="course" id="course">
+            <option value="0" class="disabled" disabled selected>Studiengang</option>
+            <?php $oAnmeldung->getOptionCourseOfStudy() ?>
+        </select>
+    </div>
+
+    <div class="registration-form-input">
+        <label class="label" for="semester">Semester</label>
+        <input type="number" name="semester" id="semester" placeholder="Semester" class="rf-input"/>
+    </div>
+
+    <div class="registration-form-input">
+        <label class="label" for="degree">Degree</label>
+        <input type="text" name="degree" id="degree" placeholder="Degree" class="rf-input" required/>
+    </div>
+
+    <div class="registration-form-input">
+        <label class="label" for="fields">Interessen</label>
+        <select id="fields" multiple placeholder="Interessen">
+            <?php $oAnmeldung->getOptionFieldAreas() ?>
+        </select>
+    </div>
+
+    <div class="registration-form-input registration-form-textarea">
+        <label class="label" for="experience">Erfahrungen</label>
+        <textarea name="experience" id="experience" placeholder="Erfahrungen" required></textarea>
+    </div>
+
+    <div class="registration-form-input registration-form-textarea">
+        <label class="label" for="information">Weitere Informationen</label>
+        <textarea name="information" id="information" placeholder="Weitere Informationen"></textarea>
+    </div>
+
+    <button class="registration-form-submit" type="submit">Absenden</button>
 </form>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('register-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            formData.append('action', 'handle_anmeldung_form_submission');
-
-            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(data.data.message);
-                    } else {
-                        alert('Form submission failed.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred.');
-                });
-        });
-    });
-</script>
+<script src="<?php echo PLUGIN_URL . 'assets/js/multiselect-dropdown.js' ?>"></script>
+<script src="<?php echo PLUGIN_URL . 'assets/js/custom_select.js' ?>"></script>
