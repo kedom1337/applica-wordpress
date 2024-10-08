@@ -52,23 +52,8 @@ function starkstrom_register_blocks(): void {
 
 add_action( 'init', 'starkstrom_register_blocks' );
 
-function makeAnmeldung() {
-		$data = [
-			'firstName'   => sanitize_text_field($_POST['firstName']),
-			'lastName'    => sanitize_text_field($_POST['lastName']),
-			'email'       => sanitize_email($_POST['email']),
-			'phone'       => sanitize_text_field($_POST['phone']),
-			'courseId'    => intval($_POST['courseId']),
-			'semester'    => intval($_POST['semester']),
-			'degree'      => sanitize_text_field($_POST['degree']),
-			'experience'  => sanitize_textarea_field($_POST['experience']),
-			'information' => sanitize_textarea_field($_POST['information']),
-			'course'      => intval($_POST['course']),
-			'fields'      => array_map('intval', explode(',', $_POST['fields'])),
-		];
-
-
-		wp_send_json_success(['message' => 'Form submitted successfully!']);
+function makeAnmeldung() : void {
+    (new Mod_Application())->makeAnmeldung();
 }
 
 add_action('wp_ajax_handle_anmeldung_form_submission', 'makeAnmeldung');

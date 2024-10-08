@@ -33,7 +33,7 @@ $oAnmeldung = new Mod_Application();
 
     <div class="registration-form-input">
         <label class="label" for="semester">Semester</label>
-        <input type="number" name="semester" id="semester" placeholder="Semester" class="rf-input"/>
+        <input type="number" name="semester" id="semester" min="1" max="16" placeholder="Semester" class="rf-input"/>
     </div>
 
     <div class="registration-form-input">
@@ -63,3 +63,5 @@ $oAnmeldung = new Mod_Application();
 
 <script src="<?php echo PLUGIN_URL . 'assets/js/multiselect-dropdown.js' ?>"></script>
 <script src="<?php echo PLUGIN_URL . 'assets/js/custom_select.js' ?>"></script>
+<script>var baseURL = "<?php echo get_site_url() ?>";</script>
+

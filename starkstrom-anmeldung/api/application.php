@@ -1,21 +1,31 @@
 <?php
 
-class API_Application {
+class API_Application{
 
     const ARRAY_RESPONSE = 0;
     const JSON_RESPONSE = 1;
+    const JSON_REQUEST = 1;
 
-    private $intResponseType = 0;
+    private int $intResponseType = 0;
+    private int $intRequestType = 0;
 
     public function __construct() {
     }
 
-    public function setResponseType($intType) {
+    public function setResponseType($intType): void{
         $this->intResponseType = $intType;
     }
 
-    public function getResponseType() {
+    public function getResponseType(): int{
         return $this->intResponseType;
+    }
+
+    public function setRequestType($intType): void {
+        $this->intRequestType = $intType;
+    }
+
+    public function getRequestType(): int {
+        return $this->intRequestType;
     }
 
     public function getCourses() {
@@ -27,7 +37,6 @@ class API_Application {
     }
 
     public function sendApplication($arrFields) {
-        $strUrl = API_URL . 'applications';
         return $this->makeRequest('POST', 'applications', $arrFields);
     }
 
@@ -35,10 +44,18 @@ class API_Application {
         $oCurl = curl_init();
         $strUrl = API_URL . "/" . $strRoute;
 
+        $strHeader = ['Content-Type: application/x-www-form-urlencoded'];
+
         switch (strtoupper($strMethod)) {
             case 'POST':
+                if ($this->getRequestType() == self::JSON_REQUEST) {
+                    $strHeader = ['Content-Type: application/json'];
+                    $arrData = json_encode($arrData);
+                } else {
+                    $arrData = http_build_query($arrData);
+                }
                 curl_setopt($oCurl, CURLOPT_POST, true);
-                curl_setopt($oCurl, CURLOPT_POSTFIELDS, http_build_query($arrData));
+                curl_setopt($oCurl, CURLOPT_POSTFIELDS, $arrData);
                 break;
             case 'PUT':
                 curl_setopt($oCurl, CURLOPT_CUSTOMREQUEST, 'PUT');
@@ -57,9 +74,7 @@ class API_Application {
 
         curl_setopt($oCurl, CURLOPT_URL, $strUrl);
         curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($oCurl, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/x-www-form-urlencoded'
-        ]);
+        curl_setopt($oCurl, CURLOPT_HTTPHEADER, $strHeader);
 
         $oResponse = curl_exec($oCurl);
         curl_close($oCurl);
