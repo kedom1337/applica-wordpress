@@ -1,0 +1,106 @@
+.multiselect-dropdown {
+  display: flex;
+  padding: 10px 12px;
+  border-radius: 6px;
+  outline: 1px solid #dee2e6;
+  background-color: white;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder {
+  display: inline-block;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.multiselect-dropdown span.optext {
+  background-color: #eeeeee;
+  padding: 4px 0.75em;
+  border-radius: 4px;
+  gap: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.multiselect-dropdown span.optext .optdel {
+  float: right;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: #666;
+}
+
+.multiselect-dropdown span.optext .optdel:hover {
+  color: #ff0000;
+}
+
+.multiselect-dropdown span.placeholder {
+  color: #adb0b4;
+}
+
+.multiselect-dropdown-list-wrapper {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  border-radius: 6px;
+  border: solid 1px #ced4da;
+  display: none;
+  margin: -1px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+}
+
+.multiselect-dropdown-list-wrapper .multiselect-dropdown-search {
+  margin-bottom: 5px;
+}
+
+.multiselect-dropdown-list {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.multiselect-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.multiselect-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: #bec4ca;
+  border-radius: 3px;
+}
+
+.multiselect-dropdown-list div {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.multiselect-dropdown-list input {
+  height: 1.15em;
+  width: 1.15em;
+  outline: none !important;
+}
+
+.multiselect-dropdown-list label {
+  color: #000000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.multiselect-dropdown-list div.checked {
+}
+
+.multiselect-dropdown-list div:hover {
+  background-color: #f2f2f2;
+}
